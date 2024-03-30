@@ -2,14 +2,13 @@
 export default {
   content: [
     "./index.html",
-    "./src/main.jsx",
-    "./src/Card.jsx",
-    "./src/SearchBox.jsx",
-    "./src/App.jsx",
+    "./src/components/main.jsx",
+    "./src/components/Card.jsx",
+    "./src/components/SearchBox.jsx",
+    "./src/containers/App.jsx",
   ],
   theme: {
     extend: {},
   },
   plugins: [],
-}
-
+};
