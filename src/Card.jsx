@@ -1,7 +1,7 @@
 
 function Card({ name, email, id }) {
   return (
-    <div className="bg-lime-300 p-6 m-4 inline-block rounded-3xl hover:scale-105 shadow-xl">
+    <div className="bg-lime-300 p-2 m-3 inline-block rounded-3xl hover:scale-105 shadow-xl">
       <img
         className="mb-3"
         alt="robots"
