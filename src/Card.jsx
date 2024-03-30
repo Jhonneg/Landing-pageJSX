@@ -1,16 +1,15 @@
-import "./Card.css";
 
-function Card(props) {
+function Card({ name, email, id }) {
   return (
     <div className="bg-lime-300 p-6 m-4 inline-block rounded-3xl hover:scale-105 shadow-xl">
       <img
         className="mb-3"
         alt="robots"
-        src="https://robohash.org/test?200x200"
+        src={`https://robohash.org/${id}?200x200`}
       />
       <div className="text-center">
-        <h2>{props.name}</h2>
-        <p>{props.email}</p>
+        <h2>{name}</h2>
+        <p>{email}</p>
       </div>
     </div>
   );
