@@ -2,7 +2,8 @@
 export default {
   content: [
     "./index.html",
-    "./src/main.jsx"
+    "./src/main.jsx",
+    "./src/Card.jsx"
   ],
   theme: {
     extend: {},
