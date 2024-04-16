@@ -3,7 +3,7 @@ import CardList from "../components/Cardlist.jsx";
 import SearchBox from "../components/SearchBox.jsx";
 import Scroll from "../components/Scroll.jsx";
 
-function App() {
+export default function App() {
   const [robots, setRobots] = useState([]);
   const [searchfield, setSearchfield] = useState("");
 
@@ -32,4 +32,3 @@ function App() {
     </main>
   );
 }
-export default App;
