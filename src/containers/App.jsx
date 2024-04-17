@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import CardList from "../components/Cardlist.jsx";
 import SearchBox from "../components/SearchBox.jsx";
 import Scroll from "../components/Scroll.jsx";
+import { setSearchField } from "../components/action.js";
 
-export default function App() {
+function App() {
   const [robots, setRobots] = useState([]);
   const [searchfield, setSearchfield] = useState("");
 
@@ -32,3 +34,4 @@ export default function App() {
     </main>
   );
 }
+export default connect()(App);
