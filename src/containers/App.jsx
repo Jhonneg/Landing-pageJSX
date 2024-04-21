@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import CardList from "../components/Cardlist.jsx";
 import SearchBox from "../components/SearchBox.jsx";
 import Scroll from "../components/Scroll.jsx";
-import { setSearchField } from "../components/action.js";
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchField, requestRobots } from "../components/action.js";
 
-function App() {
+function App({ store }) {
   const [robots, setRobots] = useState([]);
-  const [searchfield, setSearchfield] = useState("");
+  const dispatch = useDispatch();
+  const text = useSelector((state) => state.searchRobots.searchField);
+  const robotUsers = useSelector((state) => state.getRobotsReducer.users);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -16,12 +18,21 @@ function App() {
   }, []);
 
   const onSearchChange = (event) => {
-    setSearchfield(event.target.value);
+    dispatch(setSearchField(event.target.value));
   };
+  useEffect(() => {
+    dispatch(requestRobots());
+  }, [dispatch]);
 
-  const filteredRobots = robots.filter((robots) => {
-    return robots.name.toLowerCase().includes(searchfield.toLowerCase());
-  });
+  useEffect(() => {
+    const filteredRobots = robotUsers.filter((robots) => {
+      return robots.name.toLowerCase().includes(text.toLowerCase());
+    });
+    setRobots(filteredRobots);
+  }, [text, robotUsers]);
+
+  const newRobot = robots;
+
   return !robots.length ? (
     <h1>Loading</h1>
   ) : (
@@ -29,9 +40,13 @@ function App() {
       <h1 className="text-8xl mt-3 font-w font-bold">Robo Friends</h1>
       <SearchBox searchChange={onSearchChange} />
       <Scroll>
-        <CardList robots={filteredRobots} />
+        {text === "" ? (
+          <CardList robots={robotUsers} />
+        ) : (
+          <CardList robots={newRobot} />
+        )}
       </Scroll>
     </main>
   );
 }
-export default connect()(App);
+export default App;

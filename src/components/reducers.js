@@ -1,12 +1,47 @@
-import { CHANGE_SEARCH_FIELD } from "./constant";
+import {
+  CHANGE_SEARCH_FIELD,
+  FETCH_PRODUCTS_ERROR,
+  FETCH_PRODUCTS_SUCCESS,
+  FETCH_PRODUCTS_PENDING,
+} from "./constant";
+
 const initialState = {
   searchField: "",
 };
-export function searchRobots(state = initialState, action = {}) {
-  switch (action.type) {
+export function searchRobots(state = initialState, { type, payload }) {
+  switch (type) {
     case CHANGE_SEARCH_FIELD:
-      return { ...state, searchField: action.payload };
+      return { ...state, searchField: payload };
     default:
       return state;
   }
 }
+const robotInitialState = {
+  pending: false,
+  users: [],
+  error: null,
+};
+
+export const getRobotsReducer = (state = robotInitialState, action) => {
+  switch (action.type) {
+    case FETCH_PRODUCTS_PENDING:
+      return {
+        ...state,
+        pending: true,
+      };
+    case FETCH_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        users: action.payload,
+      };
+    case FETCH_PRODUCTS_ERROR:
+      return {
+        ...state,
+        pending: false,
+        error: action.error,
+      };
+    default:
+      return state;
+  }
+};
