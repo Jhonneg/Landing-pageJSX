@@ -33,9 +33,7 @@ function App({ store }) {
 
   const newRobot = robots;
 
-  return !robots.length ? (
-    <h1>Loading</h1>
-  ) : (
+  return(
     <main className="text-center">
       <h1 className="text-8xl mt-3 font-w font-bold">Robo Friends</h1>
       <SearchBox searchChange={onSearchChange} />
