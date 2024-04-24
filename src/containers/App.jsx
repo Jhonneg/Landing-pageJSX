@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import CardList from "../components/Cardlist.jsx";
 import SearchBox from "../components/SearchBox.jsx";
 import Scroll from "../components/Scroll.jsx";
+import Header from "../components/Header.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchField, requestRobots } from "../components/action.js";
 
@@ -33,9 +34,9 @@ function App({ store }) {
 
   const newRobot = robots;
 
-  return(
+  return (
     <main className="text-center">
-      <h1 className="text-8xl mt-3 font-w font-bold">Robo Friends</h1>
+      <Header />
       <SearchBox searchChange={onSearchChange} />
       <Scroll>
         {text === "" ? (
