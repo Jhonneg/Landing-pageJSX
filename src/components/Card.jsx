@@ -1,5 +1,5 @@
 
-function Card({ name, email, id }) {
+export default function Card({ name, email, id }) {
   return (
     <div className="bg-lime-300 p-2 m-3 inline-block rounded-3xl hover:scale-105 shadow-xl">
       <img
@@ -14,5 +14,3 @@ function Card({ name, email, id }) {
     </div>
   );
 }
-
-export default Card;
