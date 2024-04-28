@@ -17,7 +17,7 @@ interface iAppState {
   searchfield: string;
 }
 
-function App({ store }): FC {
+function App({ store }): JSX.Element {
   const [robots, setRobots] = useState([]);
   const dispatch = useDispatch();
   const text = useSelector((state) => state.searchRobots.searchField);
@@ -29,7 +29,7 @@ function App({ store }): FC {
       .then((users) => setRobots(users));
   }, []);
 
-  const onSearchChange = (event) => {
+  const onSearchChange = (event: React.SyntheticEvent<HTMLInputElement>) => {
     dispatch(setSearchField(event.target.value));
   };
   useEffect(() => {
