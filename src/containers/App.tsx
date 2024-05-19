@@ -24,7 +24,7 @@ function App({ store }): JSX.Element {
   const robotUsers = useSelector((state) => state.getRobotsReducer.users);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch("https://swapi.dev/api/people")
       .then((response) => response.json())
       .then((users) => setRobots(users));
   }, []);
